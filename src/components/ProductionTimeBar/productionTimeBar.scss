@@ -1,0 +1,23 @@
+.production-time-bar {
+  display: flex;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  color: #fff;
+
+  &--prepared {
+    background: #F7C136;
+    border-radius: 2px;
+  }
+
+  &--running {
+    background: #31AD2E;
+    border-radius: 2px;
+  }
+
+  &--pending {
+    background: #9AD296;
+    border-radius: 2px;
+  }
+}

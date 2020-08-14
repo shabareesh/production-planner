@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductionTimeBar should match snapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="production-time-bar"
+    >
+      <span
+        class="production-time-bar--prepared"
+        style="width: 16.67%;"
+      >
+        2
+      </span>
+      <span
+        class="production-time-bar--running"
+        style="width: 16.67%;"
+      >
+        2
+      </span>
+      <span
+        class="production-time-bar--pending"
+        style="width: 66.67%;"
+      >
+        8
+      </span>
+    </div>
+  </div>
+</body>
+`;

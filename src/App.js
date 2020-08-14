@@ -2,10 +2,12 @@ import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.scss';
+import ProductionTimeBar from "./components/ProductionTimeBar/ProductionTimeBar";
 
 function App() {
   return (
     <div className="App">
+      <ProductionTimeBar runningTime={2} totalTime={12} preparedTime={2} />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />

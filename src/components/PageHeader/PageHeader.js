@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 
 const PageHeader = () => (
     <div className="page-header">
-        <AppBar position="fixed">
+        <AppBar position="static">
             <Typography variant="h6" noWrap>
                 Production Planner
             </Typography>

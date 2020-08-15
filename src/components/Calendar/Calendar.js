@@ -1,8 +1,9 @@
 import React from 'react';
+import CalendarActions from "../CalendarActions/CalendarActions";
 
 const Calendar = () => (
     <div className="calendar">
-        Coming Soon!!
+        <CalendarActions />
     </div>
 );
 

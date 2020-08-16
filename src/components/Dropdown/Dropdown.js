@@ -9,7 +9,7 @@ import './dropdown.scss';
 
 const useStyles = makeStyles(() => ({
     formControl: {
-        width: '100%',
+        flex: 1,
     },
     label: {
         marginRight: '10px',
@@ -22,7 +22,7 @@ const Dropdown = ({ options, selectedValue, onChange, label }) => {
     return (
         <div className="dropdown">
             {label && <FormControl className={classes.label}>{label}</FormControl>}
-            <FormControl variant="outlined" className={classes.formControl}>
+            <FormControl className={classes.formControl}>
                 <Select
                     labelId="demo-simple-select-outlined-label"
                     id="demo-simple-select-outlined"

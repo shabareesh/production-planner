@@ -6,7 +6,6 @@ const DatePicker = ({ selectedDate, onChange }) => (
         <MuiDatePicker
             autoOk
             variant="inline"
-            inputVariant="outlined"
             format="dd-MM-yyyy"
             value={selectedDate}
             onChange={onChange}

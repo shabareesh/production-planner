@@ -79,13 +79,12 @@ const WeekPicker = ({ selectedDate, onChange, classes }) => {
         );
     };
     const formatWeekSelectLabel = date =>
-        `${format(startOfWeek(date), "dd/MM/yyyy")} - ${format(endOfWeek(date), "dd-MM-yyyy")}`;
+        `${format(startOfWeek(date), "dd-MM-yyyy")} - ${format(endOfWeek(date), "dd-MM-yyyy")}`;
 
     return (
         <DatePicker
             autoOk
             variant="inline"
-            inputVariant="outlined"
             format="dd-MM-yyyy"
             value={startOfWeek(selectedDate)}
             onChange={onChange}

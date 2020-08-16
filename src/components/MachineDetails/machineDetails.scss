@@ -1,0 +1,48 @@
+.machine-details {
+  flex: 0 0 200px;
+  padding-right: 30px;
+
+  &--name {
+    display: flex;
+    align-items: center;
+    margin: 0 0 5px;
+  }
+
+  &--status {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-left: 5px;
+
+    &__active {
+      background: #31AD2E;
+    }
+
+    &__running {
+      background: #F7C136;
+    }
+
+    &__stopped {
+      background: #D53648;
+    }
+  }
+
+  .dropdown {
+    margin-bottom: 10px;
+
+    .makeStyles-label-2 {
+      text-align: right;
+      font-size: 12px;
+    }
+  }
+
+  &--date {
+    display: flex;
+
+    &__label {
+      margin-right: 10px;
+      text-align: right;
+      font-size: 12px;
+    }
+  }
+}

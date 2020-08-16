@@ -1,0 +1,18 @@
+.calendar-actions {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 50px;
+
+  &--workstation {
+    width: 300px;
+  }
+
+  &--date {
+    display: flex;
+    width: 300px;
+
+    .dropdown {
+      margin-left: 10px;
+    }
+  }
+}

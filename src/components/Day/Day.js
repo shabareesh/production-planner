@@ -22,6 +22,7 @@ const Day = ({ shiftOptions, selectedShift, order }) => {
           totalTime={timeToFloat(order.totalTime)}
           runningTime={timeToFloat(order.runningTime)}
           preparedTime={timeToFloat(order.preparedTime)}
+          startedTime={timeToFloat(order.startedTime)}
           shift={selectedShift}
         />
       ) : ''}

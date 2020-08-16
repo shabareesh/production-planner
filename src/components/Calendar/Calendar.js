@@ -29,7 +29,7 @@ const Calendar = () => {
         .map(machine => ({...machine, orders: machine.orders.filter(({date}) => isDateInRange(date, selectedDate))}));
 
     const machines = selectedCalendarView === 'Daily' ? getMachinesForDailyView() : getMachinesForWeeklyView();
-    console.log('machines', machines);
+
     const handleWorkStationChange = (e) => {
         setWorkStation(e.target.value);
     };

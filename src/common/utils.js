@@ -1,5 +1,5 @@
 import startOfWeek from "date-fns/startOfWeek";
-import isEqual from "date-fns/isEqual";
+import isSameDay from "date-fns/isSameDay";
 
 export const calculatePercent = (total, num) => ((num / total) * 100).toFixed(2);
 
@@ -19,7 +19,7 @@ export const getDate = (date) => {
 export const isDateEqual = (date, selectedDate) => {
   const dateLeft = date instanceof Date ? date : getDate(date);
   const dateRight = selectedDate instanceof Date ? selectedDate : getDate(selectedDate);
-  return isEqual(dateLeft, dateRight);
+  return isSameDay(dateLeft, dateRight);
 };
 
 export const isDateInRange = (date, selectedDate) => {

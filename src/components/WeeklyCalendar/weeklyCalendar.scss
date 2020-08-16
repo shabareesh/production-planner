@@ -1,0 +1,21 @@
+.weekly-calendar {
+  overflow-x: auto;
+
+  &--header {
+    display: flex;
+    margin-bottom: 20px;
+
+    &__emptyBox {
+      flex: 0 0 200px;
+    }
+
+    &__day {
+      flex: 0 0 600px;
+      text-align: center;
+    }
+  }
+
+  &--content {
+    display: flex;
+  }
+}

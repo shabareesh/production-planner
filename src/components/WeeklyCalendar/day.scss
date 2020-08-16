@@ -1,0 +1,15 @@
+.day {
+  display: flex;
+  flex: 0 0 600px;
+  position: relative;
+
+  &--shift {
+    flex: 1;
+    background: #C2C2C2;
+    border: 1px solid rgba(224, 224, 224, 1);
+
+    &__active {
+      background: #fff;
+    }
+  }
+}

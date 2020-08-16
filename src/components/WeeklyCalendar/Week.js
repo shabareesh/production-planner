@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './week.scss';
 import MachineDetails from "../MachineDetails/MachineDetails";
 import {days} from "../../common/constants";
-import Day from "./Day";
+import Day from "../Day/Day";
 
 const Week = ({ machine }) => {
   const shiftOptions = [

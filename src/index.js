@@ -7,14 +7,17 @@ import App from './App';
 import store from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
+import { SnackbarProvider } from "notistack";
 
 ReactDOM.render(
-    <Provider store={store}>
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <App />
-        </MuiPickersUtilsProvider>
-    </Provider>,
-    document.getElementById('root')
+  <Provider store={store}>
+    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <SnackbarProvider maxSnack={3}>
+        <App />
+      </SnackbarProvider>
+    </MuiPickersUtilsProvider>
+  </Provider>,
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

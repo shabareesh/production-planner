@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CalendarActions from "../CalendarActions/CalendarActions";
 import WeeklyCalendar from "../WeeklyCalendar/WeeklyCalendar";
 import {isDateEqual, isDateInRange} from "../../common/utils";
@@ -6,8 +6,11 @@ import {data} from "../../common/data";
 
 import './calendar.scss';
 import DailyCalendar from "../DailyCalendar/DailyCalendar";
+import {useSnackbar} from "notistack";
 
 const Calendar = () => {
+    const { enqueueSnackbar } = useSnackbar();
+
     const workStationOptions = data.map(e => ({label: e.workStation, value: e.workStation}));
     const calendarViewOptions = [
         { label: 'Weekly', value: 'Weekly' },
@@ -29,6 +32,20 @@ const Calendar = () => {
         .map(machine => ({...machine, orders: machine.orders.filter(({date}) => isDateInRange(date, selectedDate))}));
 
     const machines = selectedCalendarView === 'Daily' ? getMachinesForDailyView() : getMachinesForWeeklyView();
+
+    const showSnackBar = (message) => {
+        enqueueSnackbar(
+          message,
+          {variant: 'error', anchorOrigin: {vertical: 'top', horizontal: 'center'}});
+    };
+
+    useEffect(() => {
+        machines.forEach((machine) => {
+            if (machine.status === 'stopped') {
+                showSnackBar(`Machine ${machine.name} stopped working due to a defect`);
+            }
+        });
+    });
 
     const handleWorkStationChange = (e) => {
         setWorkStation(e.target.value);

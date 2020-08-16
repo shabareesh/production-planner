@@ -21,7 +21,7 @@ const OrderDetailsCard = ({
 	  className="order-details-card"
 	  style={{
 	  	width: `${200 * shift}px`,
-		  left: `${calculatePercent(8 * shift, startedTime)}px`,
+		  marginLeft: `${calculatePercent(8 * shift, startedTime)}px`,
 	  }}
   >
     <span className="order-details-card--orderNumber">Order No. {orderNumber}</span>

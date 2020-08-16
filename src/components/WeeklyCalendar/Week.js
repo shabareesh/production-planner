@@ -38,7 +38,7 @@ const Week = ({ machine }) => {
           key={day}
           shiftOptions={shiftOptions}
           selectedShift={selectedShift}
-          order={machine.orders.find(({ date }) => getWeekName(date) === day)}
+          orders={machine.orders.filter(({ date }) => getWeekName(date) === day)}
         />
       )}
     </div>

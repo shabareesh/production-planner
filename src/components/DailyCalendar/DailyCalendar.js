@@ -34,14 +34,11 @@ const DailyCalendar = ({ machines }) => {
 						selectedDate={selectedDate}
 						handleSelectedDate={handleSelectedDate}
 					/>
-					{machine.orders.map(order => (
-						<Day
-							key={order.orderNumber}
-							order={order}
-							shiftOptions={shiftOptions}
-							selectedShift={selectedShift}
-						/>
-					))}
+					<Day
+						orders={machine.orders}
+						shiftOptions={shiftOptions}
+						selectedShift={selectedShift}
+					/>
 				</div>
 			))}
 		</div>

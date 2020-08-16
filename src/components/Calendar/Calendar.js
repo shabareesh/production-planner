@@ -21,17 +21,12 @@ const Calendar = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [selectedCalendarView, setSelectedCalendarView] = useState(calendarViewOptions[0].value);
 
-    const getMachinesForDailyView = () =>
+    const getMachines = (callback) =>
       data
         .find(e => e.workStation === workStation).machines
-        .map(machine => ({...machine, orders: machine.orders.filter(({ date }) => isDateEqual(date, selectedDate))}));
+        .map(machine => ({...machine, orders: machine.orders.filter(({date}) => callback(date, selectedDate))}));
 
-    const getMachinesForWeeklyView = () =>
-      data
-        .find(e => e.workStation === workStation).machines
-        .map(machine => ({...machine, orders: machine.orders.filter(({date}) => isDateInRange(date, selectedDate))}));
-
-    const machines = selectedCalendarView === 'Daily' ? getMachinesForDailyView() : getMachinesForWeeklyView();
+    const machines = getMachines(selectedCalendarView === 'Daily' ? isDateEqual : isDateInRange);
 
     const showSnackBar = (message) => {
         enqueueSnackbar(

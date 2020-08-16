@@ -3,6 +3,7 @@ import './week.scss';
 import MachineDetails from "../MachineDetails/MachineDetails";
 import {days} from "../../common/constants";
 import Day from "../Day/Day";
+import {getWeekName} from "../../common/utils";
 
 const Week = ({ machine }) => {
   const shiftOptions = [
@@ -20,7 +21,7 @@ const Week = ({ machine }) => {
 
   const handleSelectedDate = (date) => {
     setSelectedDate(date);
-  }
+  };
 
   return (
     <div className="week">
@@ -37,8 +38,7 @@ const Week = ({ machine }) => {
           key={day}
           shiftOptions={shiftOptions}
           selectedShift={selectedShift}
-          orders={machine.orders}
-          weekName={day}
+          order={machine.orders.find(({ date }) => getWeekName(date) === day)}
         />
       )}
     </div>

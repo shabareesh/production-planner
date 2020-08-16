@@ -2,11 +2,9 @@ import React from 'react';
 
 import './day.scss';
 import OrderDetailsCard from "../OrderDetailsCard/OrderDetailsCard";
-import {getWeekName, timeToFloat} from "../../common/utils";
+import { timeToFloat } from "../../common/utils";
 
-const Day = ({ shiftOptions, selectedShift, orders, weekName }) => {
-  const order = orders.find(({ date }) => getWeekName(date) === weekName);
-
+const Day = ({ shiftOptions, selectedShift, order }) => {
   return (
     <div className="day">
       {shiftOptions.map((shift, index) => (

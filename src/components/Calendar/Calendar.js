@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import CalendarActions from "../CalendarActions/CalendarActions";
 import WeeklyCalendar from "../WeeklyCalendar/WeeklyCalendar";
-import {isDateInRange} from "../../common/utils";
+import {isDateEqual, isDateInRange} from "../../common/utils";
 import {data} from "../../common/data";
 
 import './calendar.scss';
+import DailyCalendar from "../DailyCalendar/DailyCalendar";
 
 const Calendar = () => {
     const workStationOptions = data.map(e => ({label: e.workStation, value: e.workStation}));
@@ -17,10 +18,18 @@ const Calendar = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [selectedCalendarView, setSelectedCalendarView] = useState(calendarViewOptions[0].value);
 
-    const machines = data
-      .find(e => e.workStation === workStation).machines
-      .map(machine => ({...machine, orders: machine.orders.filter(({ date }) => isDateInRange(date, selectedDate))}));
+    const getMachinesForDailyView = () =>
+      data
+        .find(e => e.workStation === workStation).machines
+        .map(machine => ({...machine, orders: machine.orders.filter(({ date }) => isDateEqual(date, selectedDate))}));
 
+    const getMachinesForWeeklyView = () =>
+      data
+        .find(e => e.workStation === workStation).machines
+        .map(machine => ({...machine, orders: machine.orders.filter(({date}) => isDateInRange(date, selectedDate))}));
+
+    const machines = selectedCalendarView === 'Daily' ? getMachinesForDailyView() : getMachinesForWeeklyView();
+    console.log('machines', machines);
     const handleWorkStationChange = (e) => {
         setWorkStation(e.target.value);
     };
@@ -45,7 +54,10 @@ const Calendar = () => {
                 handleCalendarViewChange={handleCalendarViewChange}
                 handleDateChange={handleDateChange}
             />
-            <WeeklyCalendar machines={machines} />
+            {selectedCalendarView === 'Daily' ?
+              <DailyCalendar machines={machines} /> :
+              <WeeklyCalendar machines={machines} />
+            }
         </div>
     );
 };

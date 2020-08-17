@@ -86,14 +86,16 @@ const Calendar = () => {
                 handleCalendarViewChange={handleCalendarViewChange}
                 handleDateChange={handleDateChange}
             />
-            {selectedCalendarView === 'Daily' ?
-              <DailyCalendar machines={machines} /> :
-              <WeeklyCalendar
-                machines={machines}
-                onDrop={(e)=>drop(e)}
-                onDragOver={(e)=>onDragOver(e)}
-                calenderSelectedDate={selectedDate}
-              />
+            {machines.length ?
+              (selectedCalendarView === 'Daily' ?
+                <DailyCalendar machines={machines} /> :
+                <WeeklyCalendar
+                  machines={machines}
+                  onDrop={(e)=>drop(e)}
+                  onDragOver={(e)=>onDragOver(e)}
+                  calenderSelectedDate={selectedDate}
+                />
+              ) : 'No Machines Available for this Work Station'
             }
         </div>
     );

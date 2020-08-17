@@ -24,6 +24,7 @@ const OrderDetailsCard = ({
 }) => (
   <div
 	  className="order-details-card"
+	  id={`order${orderNumber.split('/')[1]}`}
 	  draggable={draggable}
 	  onDragStart={(e)=>onDragStart(e, orderNumber)}
 	  style={{

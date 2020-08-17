@@ -16,11 +16,11 @@ const useStyles = makeStyles(() => ({
     }
 }));
 
-const Dropdown = ({ options, selectedValue, onChange, label }) => {
+const Dropdown = ({ options, selectedValue, onChange, label, id }) => {
     const classes = useStyles();
 
     return (
-        <div className="dropdown">
+        <div className="dropdown" id={id}>
             {label && <FormControl className={classes.label}>{label}</FormControl>}
             <FormControl className={classes.formControl}>
                 <Select

@@ -23,6 +23,7 @@ const MachineDetails = ({
       onChange={handleShiftChange}
       selectedValue={selectedShift}
       label="Shifts"
+      id={`${details.name.split(' ').join('-')}-dropdown`}
     />
     <div className="machine-details--date">
       <span className="machine-details--date__label">Next Maintenance</span>

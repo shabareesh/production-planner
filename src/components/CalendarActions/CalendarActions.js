@@ -22,6 +22,7 @@ const CalendarActions = ({
                 onChange={handleWorkStationChange}
                 selectedValue={workStation}
                 label="Work Station"
+                id="workStationDropdown"
             />
         </div>
         <div className="calendar-actions--date">
@@ -33,6 +34,7 @@ const CalendarActions = ({
                 options={calendarViewOptions}
                 onChange={handleCalendarViewChange}
                 selectedValue={selectedCalendarView}
+                id="calendarViewDropdown"
             />
         </div>
     </div>

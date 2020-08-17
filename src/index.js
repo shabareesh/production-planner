@@ -2,21 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
-import './index.scss';
 import App from './App';
-import store from './app/store';
-import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import { SnackbarProvider } from "notistack";
 
+import './index.scss';
+
 ReactDOM.render(
-  <Provider store={store}>
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <SnackbarProvider maxSnack={3}>
-        <App />
-      </SnackbarProvider>
-    </MuiPickersUtilsProvider>
-  </Provider>,
+  <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    <SnackbarProvider maxSnack={3}>
+      <App />
+    </SnackbarProvider>
+  </MuiPickersUtilsProvider>,
   document.getElementById('root')
 );
 

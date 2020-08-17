@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import {useSnackbar} from "notistack";
+
 import CalendarActions from "../CalendarActions/CalendarActions";
 import WeeklyCalendar from "../WeeklyCalendar/WeeklyCalendar";
 import {isDateEqual, isDateInRange} from "../../common/utils";
 import {data as mockData} from "../../common/data";
+import DailyCalendar from "../DailyCalendar/DailyCalendar";
 
 import './calendar.scss';
-import DailyCalendar from "../DailyCalendar/DailyCalendar";
-import {useSnackbar} from "notistack";
 
 const Calendar = () => {
     const { enqueueSnackbar } = useSnackbar();

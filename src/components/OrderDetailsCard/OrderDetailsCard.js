@@ -1,10 +1,11 @@
 import React from 'react';
 import CheckIcon from '@material-ui/icons/Check';
 import BlockIcon from '@material-ui/icons/Block';
+
 import ProductionTimeBar from "../ProductionTimeBar/ProductionTimeBar";
+import { calculatePercent } from "../../common/utils";
 
 import './orderDetailsCard.scss';
-import { calculatePercent } from "../../common/utils";
 
 const onDragStart   = (e, orderNumber) =>{
 	e.dataTransfer.setData('orderNumber',orderNumber);

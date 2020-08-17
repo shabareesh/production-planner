@@ -1,9 +1,10 @@
 import React from 'react';
-import Dropdown from "../Dropdown/Dropdown";
 
-import './machineDetails.scss';
+import Dropdown from "../Dropdown/Dropdown";
 import DatePicker from "../DatePicker/DatePicker";
 import Button from "@material-ui/core/Button";
+
+import './machineDetails.scss';
 
 const MachineDetails = ({
   details,

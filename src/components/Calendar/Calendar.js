@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CalendarActions from "../CalendarActions/CalendarActions";
 import WeeklyCalendar from "../WeeklyCalendar/WeeklyCalendar";
 import {isDateEqual, isDateInRange} from "../../common/utils";
-import {data} from "../../common/data";
+import {data as mockData} from "../../common/data";
 
 import './calendar.scss';
 import DailyCalendar from "../DailyCalendar/DailyCalendar";
@@ -10,6 +10,7 @@ import {useSnackbar} from "notistack";
 
 const Calendar = () => {
     const { enqueueSnackbar } = useSnackbar();
+    const [data, setData] = useState(mockData);
 
     const workStationOptions = data.map(e => ({label: e.workStation, value: e.workStation}));
     const calendarViewOptions = [
@@ -42,6 +43,25 @@ const Calendar = () => {
         });
     });
 
+    const drop = (e) =>{
+        const droppedDate = e.target.getAttribute("data-date");
+        const orderNumber = e.dataTransfer.getData('orderNumber');
+
+        const updatedData = data
+          .map(
+            (e) =>
+              ({...e, machines: e.machines.map(machine =>
+                    ({...machine, orders: machine.orders.map(order =>
+                            order.orderNumber === orderNumber ? {...order, date: droppedDate} : order,
+                    )}
+                ))}
+            ));
+        setData(updatedData);
+    }
+    const onDragOver = (event) => {
+        event.preventDefault();
+    }
+
     const handleWorkStationChange = (e) => {
         setWorkStation(e.target.value);
     };
@@ -68,7 +88,12 @@ const Calendar = () => {
             />
             {selectedCalendarView === 'Daily' ?
               <DailyCalendar machines={machines} /> :
-              <WeeklyCalendar machines={machines} />
+              <WeeklyCalendar
+                machines={machines}
+                onDrop={(e)=>drop(e)}
+                onDragOver={(e)=>onDragOver(e)}
+                calenderSelectedDate={selectedDate}
+              />
             }
         </div>
     );

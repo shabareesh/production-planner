@@ -4,13 +4,14 @@ import './day.scss';
 import OrderDetailsCard from "../OrderDetailsCard/OrderDetailsCard";
 import { timeToFloat } from "../../common/utils";
 
-const Day = ({ shiftOptions, selectedShift, orders }) => {
+const Day = ({ shiftOptions, selectedShift, orders,draggable, ...restProps }) => {
   return (
-    <div className="day" style={{minHeight: `${(orders && orders.length) ? `${orders.length * 115}px` : 'auto'}`}}>
+    <div className="day" style={{minHeight: `${(orders && orders.length) ? `${orders.length * 115}px` : '115px'}`}}>
       {shiftOptions.map((shift, index) => (
         <div
           key={shift.value}
           className={Number(selectedShift) <= index ? 'day--shift' : 'day--shift day--shift__active'}
+           {...restProps}
         />
       ))}
 
@@ -28,6 +29,7 @@ const Day = ({ shiftOptions, selectedShift, orders }) => {
               preparedTime={timeToFloat(order.preparedTime)}
               startedTime={timeToFloat(order.startedTime)}
               shift={selectedShift}
+              draggable={draggable}
             />
           ))}
         </div>

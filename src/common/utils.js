@@ -1,5 +1,7 @@
 import startOfWeek from "date-fns/startOfWeek";
 import isSameDay from "date-fns/isSameDay";
+import addDays from "date-fns/addDays";
+import format from "date-fns/format";
 
 export const calculatePercent = (total, num) => ((num / total) * 100).toFixed(2);
 
@@ -34,3 +36,5 @@ export const getWeekName = (date) => {
   const weekIndex = getDate(date).getDay();
   return week[weekIndex];
 };
+
+export const updateAndFormatDate = (date, value) => format(addDays(date, value), 'dd-MM-yyyy');

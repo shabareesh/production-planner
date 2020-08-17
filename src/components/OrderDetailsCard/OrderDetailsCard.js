@@ -6,6 +6,10 @@ import ProductionTimeBar from "../ProductionTimeBar/ProductionTimeBar";
 import './orderDetailsCard.scss';
 import { calculatePercent } from "../../common/utils";
 
+const onDragStart   = (e, orderNumber) =>{
+	e.dataTransfer.setData('orderNumber',orderNumber);
+}
+
 const OrderDetailsCard = ({
   orderNumber,
   name,
@@ -16,9 +20,12 @@ const OrderDetailsCard = ({
   preparedTime,
   startedTime,
   shift,
+  draggable,
 }) => (
   <div
 	  className="order-details-card"
+	  draggable={draggable}
+	  onDragStart={(e)=>onDragStart(e, orderNumber)}
 	  style={{
 	  	width: `${200 * shift}px`,
 		  marginLeft: `${calculatePercent(8 * shift, startedTime)}px`,

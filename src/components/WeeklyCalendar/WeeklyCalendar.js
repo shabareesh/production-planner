@@ -4,14 +4,14 @@ import Week from "./Week";
 
 import './weeklyCalendar.scss';
 
-const WeeklyCalendar = ({ machines }) => (
+const WeeklyCalendar = ({ machines, ...restProps }) => (
     <div className="weekly-calendar">
       <div className="weekly-calendar--header">
         <div className="weekly-calendar--header__emptyBox" />
         {days.map(day => <div key={day} className="weekly-calendar--header__day">{day}</div>)}
       </div>
       {machines.map(machine => (
-        <Week machine={machine} key={machine.name} />
+        <Week machine={machine} key={machine.name} {...restProps}/>
       ))}
     </div>
 );

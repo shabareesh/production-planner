@@ -3,9 +3,9 @@ import './week.scss';
 import MachineDetails from "../MachineDetails/MachineDetails";
 import {days} from "../../common/constants";
 import Day from "../Day/Day";
-import {getWeekName} from "../../common/utils";
+import {getWeekName, updateAndFormatDate} from "../../common/utils";
 
-const Week = ({ machine }) => {
+const Week = ({ machine,calenderSelectedDate, ...restProps }) => {
   const shiftOptions = [
     {label: '1', value: '1'},
     {label: '2', value: '2'},
@@ -23,6 +23,7 @@ const Week = ({ machine }) => {
     setSelectedDate(date);
   };
 
+
   return (
     <div className="week">
       <MachineDetails
@@ -33,12 +34,15 @@ const Week = ({ machine }) => {
         selectedDate={selectedDate}
         handleSelectedDate={handleSelectedDate}
       />
-      {days.map(day =>
+      {days.map((day, index) =>
         <Day
           key={day}
+          data-date={updateAndFormatDate(calenderSelectedDate, index+1)}
+          draggable={true}
           shiftOptions={shiftOptions}
           selectedShift={selectedShift}
           orders={machine.orders.filter(({ date }) => getWeekName(date) === day)}
+          {...restProps}
         />
       )}
     </div>
